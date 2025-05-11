@@ -7,9 +7,8 @@ const popSound = document.getElementById('popSound');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Set volumes
 bgMusic.volume = 0.1;
-popSound.volume = 0.1;
+popSound.volume = 0.05;
 
 // Attempt to play background music on page load
 function tryPlayBackgroundMusic() {
@@ -27,7 +26,6 @@ function handleFirstInteraction() {
     if (!hasInteracted) {
         hasInteracted = true;
         bgMusic.play().catch(e => console.log('Retry audio playback failed:', e));
-        // Remove listeners to prevent multiple triggers
         document.removeEventListener('click', handleFirstInteraction);
         document.removeEventListener('touchstart', handleFirstInteraction);
     }
@@ -46,26 +44,27 @@ window.addEventListener('resize', () => {
 
 const balloons = [];
 const quotes = [
-    "The Lord is my strength and my shield; my heart trusts in him, and he helps me. - Psalm 28:7",
-    "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go. - Joshua 1:9",
-    "I can do all this through Christ who gives me strength. - Philippians 4:13",
-    "The Lord is close to the brokenhearted and saves those who are crushed in spirit. - Psalm 34:18",
-    "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future. - Jeremiah 29:11",
-    "Come to me, all you who are weary and burdened, and I will give you rest. - Matthew 11:28",
-    "The Lord is my light and my salvation—whom shall I fear? - Psalm 27:1",
-    "Peace I leave with you; my peace I give you. - John 14:27",
-    "Cast all your anxiety on him because he cares for you. - 1 Peter 5:7",
-    "The Lord is good, a refuge in times of trouble. He cares for those who trust in him. - Nahum 1:7",
-    "Trust in the Lord with all your heart and lean not on your own understanding. - Proverbs 3:5",
-    "Do not fear, for I am with you; do not be dismayed, for I am your God. - Isaiah 41:10",
-    "The Lord is my shepherd; I shall not want. - Psalm 23:1",
-    "You are my hiding place; you will protect me from trouble and surround me with songs of deliverance. - Psalm 32:7",
-    "God is our refuge and strength, an ever-present help in trouble. - Psalm 46:1",
-    "The Lord will fight for you; you need only to be still. - Exodus 14:14",
-    "Let us hold unswervingly to the hope we profess, for he who promised is faithful. - Hebrews 10:23",
-    "The joy of the Lord is your strength. - Nehemiah 8:10",
+    "The LORD is my strength and my shield; my heart trusted in him, and I am helped: therefore my heart greatly rejoiceth; and with my song will I praise him. - Psalm 28:7",
+    "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest. - Joshua 1:9",
+    "I can do all things through Christ which strengtheneth me. - Philippians 4:13",
+    "The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit. - Psalm 34:18",
+    "For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end. - Jeremiah 29:11",
+    "Come unto me, all ye that labour and are heavy laden, and I will give you rest. - Matthew 11:28",
+    "The LORD is my light and my salvation; whom shall I fear? the LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+    "Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid. - John 14:27",
+    "Casting all your care upon him; for he careth for you. - 1 Peter 5:7",
+    "The LORD is good, a strong hold in the day of trouble; and he knoweth them that trust in him. - Nahum 1:7",
+    "Trust in the LORD with all thine heart; and lean not unto thine own understanding. - Proverbs 3:5",
+    "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness. - Isaiah 41:10",
+    "The LORD is my shepherd; I shall not want. - Psalm 23:1",
+    "Thou art my hiding place; thou shalt preserve me from trouble; thou shalt compass me about with songs of deliverance. Selah. - Psalm 32:7",
+    "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+    "The LORD shall fight for you, and ye shall hold your peace. - Exodus 14:14",
+    "Let us hold fast the profession of our faith without wavering; (for he is faithful that promised;) - Hebrews 10:23",
+    "Then he said unto them, Go your way, eat the fat, and drink the sweet, and send portions unto them for whom nothing is prepared: for this day is holy unto our Lord: neither be ye sorry; for the joy of the LORD is your strength. - Nehemiah 8:10",
     "You are never alone; God’s presence is your comfort.",
-    "Your faith will lead you to a future filled with hope."
+    "Your faith will lead you to a future filled with hope.",
+    "Arise, shine; for thy light is come, and the glory of the LORD is risen upon thee. For, behold, the darkness shall cover the earth, and gross darkness the people: but the LORD shall arise upon thee, and his glory shall be seen upon thee. And the Gentiles shall come to thy light, and kings to the brightness of thy rising. - Isaiah 60:1-3"
 ];
 
 // Fisher-Yates shuffle for random quotes
