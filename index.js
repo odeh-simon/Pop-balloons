@@ -14,8 +14,8 @@ popSound.volume = 0.05;
 function tryPlayBackgroundMusic() {
     bgMusic.play().catch(e => {
         console.log('Initial audio playback failed:', e);
-        messageDiv.textContent = 'Tap anywhere to enable background music';
-        messageDiv.style.display = 'block';
+        messageDiv.textContent = '';
+        messageDiv.style.display = 'none';
         setTimeout(() => messageDiv.style.display = 'none', 3000);
     });
 }
